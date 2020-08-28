@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
-using Nexmo.Api.Messaging;
-using Nexmo.Api.Request;
+using Vonage.Messaging;
+using Vonage.Request;
 
 namespace SendSmsAspDotnetMvc.Controllers
 {
@@ -26,15 +26,15 @@ namespace SendSmsAspDotnetMvc.Controllers
             {
                 try
                 {
-                    var NEXMO_API_KEY = Configuration["NEXMO_API_KEY"];
-                    var NEXMO_API_SECRET = Configuration["NEXMO_API_SECRET"];
-                    var credentials = Credentials.FromApiKeyAndSecret(NEXMO_API_KEY, NEXMO_API_SECRET);
+                    var VONAGE_API_KEY = Configuration["VONAGE_API_KEY"];
+                    var VONAGE_API_SECRET = Configuration["VONAGE_API_SECRET"];
+                    var credentials = Credentials.FromApiKeyAndSecret(VONAGE_API_KEY, VONAGE_API_SECRET);
                     var client = new SmsClient(credentials);
                     var request = new SendSmsRequest { To = sendSmsModel.To, From = sendSmsModel.From, Text = sendSmsModel.Text };
                     var response = client.SendAnSms(request);
                     ViewBag.MessageId = response.Messages[0].MessageId;
                 }
-                catch(NexmoSmsResponseException ex)
+                catch(VonageSmsResponseException ex)
                 {
                     ViewBag.Error = ex.Message;
                 }
