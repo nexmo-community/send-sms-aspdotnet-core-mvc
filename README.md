@@ -9,7 +9,7 @@ This demo app will show you how to send an SMS with ASP.NET Core MVC
 
 ## Configuration
 
-In the `appsettings.json` file, replace the `NEXMO_API_KEY` and `NEXMO_API_SECRET` with your Vonage API Key and Secret.
+In the `appsettings.json` file, replace the `VONAGE_API_KEY` and `VONAGE_API_SECRET` with your Vonage API Key and Secret.
 
 ## Running
 
